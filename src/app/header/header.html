@@ -1,0 +1,86 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-warning">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/home">
+      <img src="img/logosw.png.webp" alt="" height="50px" />
+    </a>
+    <button
+      class="navbar-toggler d-lg-none"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#collapsibleNavId"
+      aria-controls="collapsibleNavId"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavId">
+      <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" routerLink="/" routerLinkActive="active">Trang chủ</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/about">Giới thiệu</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" (click)="scrollToSanPham()">Sản phẩm</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/contact">Liên hệ</a>
+        </li>
+      </ul>
+
+      <form class="d-flex my-2 my-lg-0">
+        <input
+          name="search"
+          class="form-control me-sm-2"
+          [(ngModel)]="saerch"
+          type="text"
+          placeholder="Search..."
+          (input)="Onsearch()"
+        />
+      </form>
+
+      <ul class="navbar-nav mt-lg-0">
+        <ng-container *ngIf="!isLoggedIn; else loggedIn">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/login" routerLinkActive="active">Đăng nhập</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/register" routerLinkActive="active" >Đăng ký</a>
+          </li>
+        </ng-container>
+
+        <ng-template #loggedIn>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="dropdownId"
+              data-bs-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Tài khoản
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownId">
+              <a class="dropdown-item" (click)="onLogout()">Đăng xuất</a>
+            </div>
+          </li>
+        </ng-template>
+
+        <li class="nav-item">
+          <a class="nav-link position-relative me-4 my-auto" routerLink="/cart">
+            <i class="bi bi-bag-fill"></i>
+            <span
+              class="position-absolute rounded-circle d-flex align-items-center justify-content-center text-danger px-1"
+              style="top: 3px; left: 20px; height: 20px; min-width: 20px; font-weight: bold"
+            >
+              {{ countCart() > 0 ? countCart() : '' }}
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
