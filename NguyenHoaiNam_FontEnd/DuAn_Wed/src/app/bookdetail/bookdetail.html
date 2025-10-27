@@ -1,0 +1,126 @@
+<div class="container-fluid py-1 mt-1">
+  <div class="container py-5">
+    <div class="row g-3 mb-5">
+      <div class="col-lg-8 col-xl-9">
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <div class="border rounded">
+              <a href="#">
+                <img src="{{ bookDetail()?.image }}" class="img-fluid rounded" alt="Image" />
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <h5 class="fw-bold mb-3">{{ bookDetail()?.title }}</h5>
+            <p class="mb-3">Thể loại:</p>
+            <h5 class="fw-bold price mb-1">
+              {{ discountPrice(bookDetail()!.price, bookDetail()!.discount).toLocaleString() }} đ
+              <span class="discount-badge">-{{ bookDetail()!.discount }}</span>
+            </h5>
+            <div class="old-price">{{ bookDetail()?.price.toLocaleString() }} đ</div>
+            <div class="d-flex mb-4">
+              <i class="bi bi-star text-secondary"></i>
+              <i class="bi bi-star text-secondary"></i>
+              <i class="bi bi-star text-secondary"></i>
+              <i class="bi bi-star text-secondary"></i>
+              <i class="bi bi-star"></i>
+            </div>
+            <button
+              class="btn btn-primary border border-secondary rounded-pill px-4 py-2"
+              (click)="addToCart()"
+              [routerLink]="['/cart']"
+              routerLinkActive="router-link-active"
+            >
+              <i class="bi bi-bag me-2"></i> Add to cart
+            </button>
+            <p class="fw-bold mb-1">Tác giả: {{ bookDetail()?.author }}</p>
+            <p class="fw-bold mb-3">Năm xuất bản:{{ bookDetail()!.publishDate }}</p>
+            <p class="mb-4" style="text-align: justify">
+              {{ bookDetail()?.description }}
+            </p>
+            <div class="input-group quantity mb-2">
+              <div class="input-group-btn">
+                <button
+                  class="btn btn-sm btn-minus rounded-circle bg-warning border"
+                  (click)="decreaseQuantity()"
+                >
+                  <i class="bi bi-dash"></i>
+                </button>
+              </div>
+              <input
+                type="text"
+                value="{{ quantity() }}"
+                min="1"
+                class="form-control form-control-sm text-center border-0"
+              />
+              <div class="input-group-btn">
+                <button
+                  class="btn btn-sm btn-plus rounded-circle bg-warning border"
+                  (click)="increaseQuantity()"
+                >
+                  <i class="bi bi-plus"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-12"></div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-xl-3">
+        <div class="row g-4 book">
+          <div class="col-lg-12">
+            <div class="input-group w-100 mx-auto d-flex mb-4">
+              <input
+                type="search"
+                class="form-control p-3"
+                placeholder="keywords"
+                aria-describedby="search-icon-1"
+              />
+              <span id="search-icon-1" class="input-group-text p-3"
+                ><i class="fa fa-search"></i
+              ></span>
+            </div>
+            <div class="mb-4">
+              <h4>Categories</h4>
+              <ul class="list-unstyled book-categorie">
+                <li>
+                  <div class="d-flex justify-content-between book-name">
+                    <a href="#"><i class="fa fa-book me-2"></i></a>
+                    <span>(3)</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="d-flex justify-content-between book-name">
+                    <a href="#"><i class="fa fa-book me-2"></i></a>
+                    <span>(5)</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="d-flex justify-content-between book-name">
+                    <a href="#"><i class="fa fa-book me-2"></i></a>
+                    <span>(2)</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="d-flex justify-content-between book-name">
+                    <a href="#"><i class="fa fa-book me-2"></i></a>
+                    <span>(8)</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="d-flex justify-content-between book-name">
+                    <a href="#"><i class="fa fa-book me-2"></i></a>
+                    <span>(5)</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-12">
+            <h4 class="mb-4"></h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

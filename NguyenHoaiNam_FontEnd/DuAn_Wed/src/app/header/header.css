@@ -1,0 +1,25 @@
+/* Reset CSS */
+form.d-flex input {
+    width: 300px;
+}
+.navbar-nav .nav-link,
+.btn {
+    white-space: nowrap;
+}
+.btn {
+    padding: 5px 10px;
+    font-size: 15px;
+}
+.navbar-nav {
+    gap: 10px;
+    /* Tạo khoảng cách giữa các mục */
+}
+.nav-link:hover{
+  background: rgba(255, 1, 1, 0.33);
+  display: flex;
+  align-items: center;   /* canh giữa theo chiều dọc */
+  justify-content: center; /* canh giữa theo chiều ngang */
+  transition: 0.5s ease-in-out;
+  border-radius: 10px;
+}
+
