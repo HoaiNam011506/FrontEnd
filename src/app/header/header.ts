@@ -1,4 +1,4 @@
-import { Component, computed, OnInit } from '@angular/core';
+import { Component, ElementRef, computed, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Router } from '@angular/router';
@@ -8,26 +8,29 @@ import { CartService } from '../services/cart';
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule], // <-- CommonModule cho *ngIf
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './header.html',
   styleUrls: ['./header.css'],
 })
 export class Header implements OnInit {
   saerch: string = '';
   isLoggedIn = false;
-  // dùng tên service rõ ràng
+
   countCart = computed(() => this.cartService.carts().length);
 
   constructor(
     private bookService: Bookservices,
     private cartService: CartService,
-    private router: Router
+    private router: Router,
+    private el: ElementRef
   ) {}
-ngOnInit(): void {
-  if (this.isLoggedIn) {
-    this.router.navigate(['/home']);
+
+  ngOnInit(): void {
+    if (this.isLoggedIn) {
+      this.router.navigate(['/home']);
+    }
   }
-}
+
   Onsearch() {
     this.bookService.searchBook(this.saerch || '');
   }
@@ -43,5 +46,13 @@ ngOnInit(): void {
     this.isLoggedIn = false;
     alert('Đăng xuất thành công!');
     this.router.navigate(['/home']);
+  }
+
+  /** 🔽 Thêm hàm này để tự đóng menu khi click link */
+  closeMenu() {
+    const menu = this.el.nativeElement.querySelector('#collapsibleNavId');
+    if (menu && menu.classList.contains('show')) {
+      menu.classList.remove('show');
+    }
   }
 }

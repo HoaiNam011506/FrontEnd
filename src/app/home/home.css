@@ -160,3 +160,54 @@
 .row>* {
     padding-right: 0;
 }
+/* --- Hiệu ứng cho nút TẤT CẢ MEME --- */
+.category-container .btn-all-meme {
+  background-color: #fda503;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.category-container .btn-all-meme:hover {
+  background-color: #ffb703;
+}
+
+/* Khi được chọn */
+.category-container .btn-all-meme.active {
+  background-color: #ffb703;
+  box-shadow: 0 0 10px rgba(255, 183, 3, 0.7);
+}
+
+/* --- Các danh mục con (MeMe Anime, MeMe Mèo, v.v.) --- */
+.category-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.category-item {
+  text-align: center;
+  padding: 15px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.category-item:hover {
+  background-color: #fff6e0;
+  transform: scale(1.05);
+}
+
+/* Khi được chọn (active) */
+.category-item.active {
+  background-color: #fff3cd;
+  border: 2px solid #fda503;
+  box-shadow: 0 0 10px rgba(253, 165, 3, 0.4);
+  transform: scale(1.05);
+}
